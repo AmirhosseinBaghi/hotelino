@@ -1,5 +1,5 @@
 name: hotelino
-description: "A new Flutter project."
+description: "A Hotel booking app using Provider State Managment."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
@@ -37,7 +37,6 @@ dependencies:
 
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.14.3
 
   flutter_test:
     sdk: flutter
@@ -51,23 +50,6 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
-flutter_launcher_icons:
-  android: true
-  ios: true
-  image_path: "assets/icon/icon.png"
-  min_sdk_android: 21 # android min sdk min:16, default 21
-  web:
-    generate: true
-    image_path: "assets/icon/icon.png"
-    background_color: "#B27258"
-  windows:
-    generate: true
-    image_path: "assets/icon/icon.png"
-    icon_size: 48 # min:48, max:256, default: 48
-  macos:
-    generate: true
-    image_path: "assets/icon/icon.png"
 
 # The following section is specific to Flutter packages.
 flutter:

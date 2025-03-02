@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hotelino/core/theme/app_theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -14,11 +15,53 @@ void main() {
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangePlatformBrightness() {
+    super.didChangePlatformBrightness();
+
+    final brightness =
+        WidgetsBinding.instance.platformDispatcher.platformBrightness;
+    Provider.of<ThemeProvider>(context, listen: false).updateTheme(brightness);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Consumer<ThemeProvider>(
+        builder: (context, themeModeProvider, child) {
+      return MaterialApp(
+        theme: themeModeProvider.brightness == Brightness.light
+            ? AppTheme.lightTheme
+            : AppTheme.darkTheme,
+        home: Scaffold(
+          body: Center(
+            child: ElevatedButton(
+                onPressed: () {
+                  themeModeProvider.toggleTheme();
+                },
+                child: Text("Chanhge Theme")),
+          ),
+        ),
+      );
+    });
   }
 }

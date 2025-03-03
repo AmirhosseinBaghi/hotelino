@@ -3,6 +3,8 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hotelino/bootstrap.dart';
 import 'package:hotelino/core/theme/app_theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
+import 'package:hotelino/feachures/onboarding/data/repositories/onboarding_repositories.dart';
+import 'package:hotelino/feachures/onboarding/presentation/onboarding_provider.dart';
 import 'package:hotelino/routes/app_route.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +19,9 @@ void main() async {
     providers: [
       ChangeNotifierProvider(
           create: (_) => ThemeProvider(
-              WidgetsBinding.instance.platformDispatcher.platformBrightness))
+              WidgetsBinding.instance.platformDispatcher.platformBrightness)),
+      ChangeNotifierProvider(
+          create: (_) => OnboardingProvider(OnboardingRepositories()))
     ],
     child: const MyApp(),
   ));

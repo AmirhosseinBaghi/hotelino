@@ -25,13 +25,18 @@ class OnboardingItems extends StatelessWidget {
         Text(
           title,
           textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineMedium,
         ),
         SizedBox(
           height: 30,
         ),
-        Text(
-          description,
-          textAlign: TextAlign.center,
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20),
+          child: Text(
+            description,
+            textAlign: TextAlign.center,
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
         )
       ],
     );

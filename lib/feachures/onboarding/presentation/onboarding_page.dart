@@ -32,9 +32,40 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   description: data["description"]!,
                   image: data["image"]!);
             },
-          ))
+          )),
+          SizedBox(
+            height: 20,
+          ),
+          buildPageIndicator(
+              onboardingprovider.currentPage, totalPage, context),
+          SizedBox(
+            height: 80,
+          )
         ],
       ),
     );
+  }
+
+  Widget buildPageIndicator(
+      int currentPage, int totalPage, BuildContext context) {
+    return Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: List.generate(
+          totalPage,
+          (index) => AnimatedContainer(
+            duration: Duration(milliseconds: 300),
+            margin: EdgeInsets.symmetric(horizontal: 5),
+            width: currentPage == index ? 12 : 8,
+            height: currentPage == index ? 12 : 8,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: currentPage == index
+                    ? Theme.of(context).colorScheme.primary
+                    : Theme.of(context)
+                        .colorScheme
+                        .primary
+                        .withValues(alpha: 0.3)),
+          ),
+        ));
   }
 }

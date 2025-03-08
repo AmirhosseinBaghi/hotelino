@@ -32,6 +32,7 @@ class OnboardingButton extends StatelessWidget {
                   border: Border.all(
                       color: Theme.of(context).colorScheme.primary, width: 1)),
               child: FloatingActionButton(
+                key: ValueKey(icon),
                 onPressed: onPeressed,
                 shape: CircleBorder(),
                 backgroundColor: backgroundcolor,

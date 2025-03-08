@@ -94,6 +94,14 @@ class _MainBottomNavState extends State<MainBottomNav> {
       items: _navBarItems(),
       controller: _controller,
       onItemSelected: (value) {},
+      navBarStyle: NavBarStyle.style7,
+      hideNavigationBarWhenKeyboardAppears: true,
+      confineToSafeArea: true,
+      handleAndroidBackButtonPress: true,
+      stateManagement: true,
+      animationSettings: NavBarAnimationSettings(
+          navBarItemAnimation:
+              ItemAnimationSettings(duration: Duration(milliseconds: 300))),
     );
   }
 }

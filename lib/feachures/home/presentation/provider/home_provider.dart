@@ -46,4 +46,23 @@ class HomeProvider extends ChangeNotifier {
         )
         .toList();
   }
+
+  // story section----------------------------------------------------------------
+
+  List<String> getStoryImages() {
+    final shuffledHotels = List<Hotel>.from(_hotels)..shuffle();
+    return shuffledHotels
+        .take(3)
+        .map(
+          (hotel) => hotel.images[0],
+        )
+        .toList();
+  }
+
+  final List<String> _storyTitle = [
+    "امکانات رفاهی",
+    "اقامت در قلب شهر",
+    "هتل های لاکچری"
+  ];
+  List<String> get storyTitle => _storyTitle;
 }

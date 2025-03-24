@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hotelino/core/constant/constant.dart';
+import 'package:hotelino/feachures/home/data/models/homepage_data.dart';
 import 'package:hotelino/feachures/home/data/models/model.dart';
 import 'package:hotelino/feachures/home/data/repositories/hotel_repository.dart';
 
@@ -10,6 +12,9 @@ class HomeProvider extends ChangeNotifier {
   }
   List<Hotel> _hotels = [];
   List<Hotel> get hotels => _hotels;
+
+  final HomePageData _homePageData = HomePageDataConstants.homePageData;
+  HomePageData get homePageData => _homePageData;
 
   fetchHotel() async {
     _hotels = await _hotelRepository.fetchHotel();

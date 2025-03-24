@@ -20,4 +20,30 @@ class HomeProvider extends ChangeNotifier {
     _hotels = await _hotelRepository.fetchHotel();
     notifyListeners();
   }
+
+  //filter methods--------------------------------------------------------------------------
+
+  List<Hotel> getPopularHotels() {
+    return _hotels
+        .where(
+          (hotel) => _homePageData.popular.contains(hotel.id),
+        )
+        .toList();
+  }
+
+  List<Hotel> getSpecialOfferHotels() {
+    return _hotels
+        .where(
+          (hotel) => _homePageData.specialOffers.contains(hotel.id),
+        )
+        .toList();
+  }
+
+  List<Hotel> getNewestHotels() {
+    return _hotels
+        .where(
+          (hotel) => _homePageData.newest.contains(hotel.id),
+        )
+        .toList();
+  }
 }

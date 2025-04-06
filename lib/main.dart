@@ -5,6 +5,7 @@ import 'package:hotelino/core/theme/app_theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
 import 'package:hotelino/feachures/home/data/repositories/hotel_repository.dart';
 import 'package:hotelino/feachures/home/data/repositories/profile_repository.dart';
+import 'package:hotelino/feachures/home/presentation/provider/favorite_list_provider.dart';
 import 'package:hotelino/feachures/home/presentation/provider/home_provider.dart';
 import 'package:hotelino/feachures/home/presentation/provider/profile_provider.dart';
 import 'package:hotelino/feachures/onboarding/data/repositories/onboarding_repositories.dart';
@@ -32,6 +33,9 @@ void main() async {
               HotelRepository(jsonDataService: JsonDataService()))),
       ChangeNotifierProvider(
           create: (_) => ProfileProvider(ProfileRepository(),
+              HotelRepository(jsonDataService: JsonDataService()))),
+      ChangeNotifierProvider(
+          create: (_) => FavoriteListProvider(
               HotelRepository(jsonDataService: JsonDataService())))
     ],
     child: const MyApp(),

@@ -6,8 +6,8 @@ class ProfileRepository {
 
     return Profile(
       id: "7954862145",
-      name: "کیان خاکی",
-      email: "kiankhaki@gmail.com",
+      name: "امیرحسین باقی",
+      email: "dev.amir.b22@gmail.com",
       avatarUrl: "https://dunijet.ir/content/projects/hotelino/profile_pic.png",
       phoneNumber: "+989123456789",
       location: "تهران، ایران",

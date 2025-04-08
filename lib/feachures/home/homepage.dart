@@ -31,6 +31,13 @@ class HomePage extends StatelessWidget {
                     title: "محبوب ترین هتل ها",
                     hotels: homeProvider.getPopularHotels());
               },
+            ),
+            Consumer<HomeProvider>(
+              builder: (context, homeProvider, child) {
+                return HotelListSection(
+                    title: "پیشنهاد ویژه امروز",
+                    hotels: homeProvider.getSpecialOfferHotels());
+              },
             )
           ],
         ),

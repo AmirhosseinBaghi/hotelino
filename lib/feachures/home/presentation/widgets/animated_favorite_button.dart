@@ -4,49 +4,53 @@ import 'package:hotelino/shared/widgets/glassmorphism.dart';
 class AnimatedFavoriteButton extends StatefulWidget {
   final bool isFavorite;
   final VoidCallback onTap;
-  const AnimatedFavoriteButton(
-      {super.key, required this.isFavorite, required this.onTap});
+
+  const AnimatedFavoriteButton({
+    super.key,
+    required this.isFavorite,
+    required this.onTap,
+  });
 
   @override
-  State<AnimatedFavoriteButton> createState() => _AnimatedFavoriteButtonState();
+  AnimatedFavoriteButtonState createState() => AnimatedFavoriteButtonState();
 }
 
-class _AnimatedFavoriteButtonState extends State<AnimatedFavoriteButton>
+class AnimatedFavoriteButtonState extends State<AnimatedFavoriteButton>
     with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 250),
+    );
+    _scaleAnimation = Tween<double>(begin: 1.0, end: 1.25).animate(
+      CurvedAnimation(parent: _controller, curve: Curves.elasticOut),
+    );
+
+    _controller.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        _controller.reverse();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _handleTap() {
+    widget.onTap();
+    _controller.forward();
+  }
+
   @override
   Widget build(BuildContext context) {
-    late AnimationController _controller;
-    late Animation<double> _scaleAnimation;
-
-    @override
-    void initState() {
-      super.initState();
-      _controller = AnimationController(
-        vsync: this,
-        duration: const Duration(milliseconds: 250),
-      );
-      _scaleAnimation = Tween<double>(begin: 1.0, end: 1.25).animate(
-        CurvedAnimation(parent: _controller, curve: Curves.elasticOut),
-      );
-
-      _controller.addStatusListener((status) {
-        if (status == AnimationStatus.completed) {
-          _controller.reverse();
-        }
-      });
-    }
-
-    @override
-    void dispose() {
-      _controller.dispose();
-      super.dispose();
-    }
-
-    void _handleTap() {
-      widget.onTap();
-      _controller.forward();
-    }
-
     return GestureDetector(
       onTap: _handleTap,
       child: Glassmorphism(

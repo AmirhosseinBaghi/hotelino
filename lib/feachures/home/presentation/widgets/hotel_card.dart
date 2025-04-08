@@ -3,12 +3,13 @@ import 'package:hotelino/core/utils/network.dart';
 import 'package:hotelino/core/utils/price_formatter.dart';
 import 'package:hotelino/feachures/home/data/models/model.dart';
 import 'package:hotelino/feachures/home/presentation/provider/favorite_list_provider.dart';
+import 'package:hotelino/feachures/home/presentation/widgets/animated_favorite_button.dart';
 import 'package:provider/provider.dart';
 
 class HotelCard extends StatelessWidget {
-  Hotel hotel;
+  final Hotel hotel;
 
-  HotelCard({super.key, required this.hotel});
+  const HotelCard({super.key, required this.hotel});
 
   @override
   Widget build(BuildContext context) {
@@ -37,6 +38,13 @@ class HotelCard extends StatelessWidget {
                     fit: BoxFit.cover,
                   ),
                 ),
+                Positioned(
+                    right: 8,
+                    top: 8,
+                    child: AnimatedFavoriteButton(
+                      isFavorite: isFavorite,
+                      onTap: () => favoriteProvider.toggleFavorite(hotel.id),
+                    ))
               ],
             ),
             Expanded(

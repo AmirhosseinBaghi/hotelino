@@ -34,6 +34,7 @@ class HotelCard extends StatelessWidget {
                     ),
                     width: double.infinity,
                     height: 200,
+                    fit: BoxFit.cover,
                   ),
                 ),
               ],

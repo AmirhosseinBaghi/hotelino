@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelino/feachures/home/data/models/model.dart';
+import 'package:hotelino/feachures/home/presentation/widgets/hotel_card.dart';
 
 class HotelListSection extends StatelessWidget {
   final String title;
@@ -36,7 +37,17 @@ class HotelListSection extends StatelessWidget {
         SizedBox(
           height: 350,
           child: ListView.builder(
-            itemBuilder: (context, index) {},
+            padding: EdgeInsets.only(right: 16.0),
+            reverse: true,
+            clipBehavior: Clip.none,
+            itemCount: hotels.length,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.only(left: 16.0),
+                child: HotelCard(hotel: hotels[index]),
+              );
+            },
           ),
         )
       ],

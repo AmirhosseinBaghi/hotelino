@@ -4,6 +4,7 @@ import 'package:hotelino/feachures/home/presentation/widgets/ad_banner.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/home_appbar.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/hotel_list_section.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/searchbar.dart';
+import 'package:hotelino/feachures/home/presentation/widgets/story_carousel.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -37,6 +38,16 @@ class HomePage extends StatelessWidget {
                 return HotelListSection(
                     title: "پیشنهاد ویژه امروز",
                     hotels: homeProvider.getSpecialOfferHotels());
+              },
+            ),
+            SizedBox(
+              height: 16,
+            ),
+            Consumer<HomeProvider>(
+              builder: (context, homeProvider, child) {
+                return StoryCarousel(
+                    images: homeProvider.getStoryImages(),
+                    title: homeProvider.storyTitle);
               },
             )
           ],

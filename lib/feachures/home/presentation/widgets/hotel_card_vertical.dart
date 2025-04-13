@@ -58,12 +58,13 @@ class HotelCardVertical extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text('${hotels.city} , ${hotels.country}'),
+                      Text('${hotels.city} ${hotels.country}'),
                       SizedBox(
                         width: 5,
                       ),
                       Icon(
                         Icons.location_on_outlined,
+                        size: 16,
                       )
                     ],
                   ),
@@ -74,11 +75,16 @@ class HotelCardVertical extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                          '${hotels.bedType.count} , ${hotels.bedType.details}'),
+                        '${hotels.bedType.count} , ${hotels.bedType.details}',
+                        textDirection: TextDirection.rtl,
+                      ),
                       SizedBox(
                         width: 5,
                       ),
-                      Icon(Icons.bed_rounded)
+                      Icon(
+                        Icons.bed_rounded,
+                        size: 16,
+                      )
                     ],
                   ),
                   SizedBox(

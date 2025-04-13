@@ -19,7 +19,7 @@
         "bedType": {
           "type": "Double Bed",
           "count": 1,
-          "details": "1 تخت دبل"
+          "details": "تخت دبل"
         },
         "amenities": ["باشگاه", "ساحل", "کولر", "استخر"]
       },
@@ -42,7 +42,7 @@
         "bedType": {
           "type": "Single Bed",
           "count": 1,
-          "details": "1 تخت سینگل"
+          "details": "تخت سینگل"
         },
         "amenities": ["باشگاه", "کولر", "رستوران"]
       },
@@ -65,7 +65,7 @@
         "bedType": {
           "type": "Double Bed",
           "count": 1,
-          "details": "1 تخت دبل"
+          "details": "تخت دبل"
         },
         "amenities": ["باشگاه", "کولر", "استخر"]
       },
@@ -88,7 +88,7 @@
         "bedType": {
           "type": "Single Bed",
           "count": 1,
-          "details": "1 تخت سینگل"
+          "details": "تخت سینگل"
         },
         "amenities": ["کولر"]
       },
@@ -111,7 +111,7 @@
         "bedType": {
           "type": "Double Bed",
           "count": 2,
-          "details": "2 تخت دبل"
+          "details": "تخت دبل"
         },
         "amenities": ["باشگاه", "کولر", "استخر"]
       },
@@ -134,7 +134,7 @@
         "bedType": {
           "type": "Single Bed",
           "count": 1,
-          "details": "1 تخت سینگل"
+          "details": "تخت سینگل"
         },
         "amenities": ["کولر"]
       },
@@ -157,7 +157,7 @@
         "bedType": {
           "type": "Queen Bed",
           "count": 1,
-          "details": "1 تخت کوئین"
+          "details": "تخت کوئین"
         },
         "amenities": ["باشگاه", "استخر"]
       },
@@ -180,7 +180,7 @@
         "bedType": {
           "type": "Double Bed",
           "count": 1,
-          "details": "1 تخت دبل"
+          "details": "تخت دبل"
         },
         "amenities": ["ساحل", "استخر", "کولر"]
       },
@@ -203,7 +203,7 @@
         "bedType": {
           "type": "Single Bed",
           "count": 1,
-          "details": "1 تخت سینگل"
+          "details": "تخت سینگل"
         },
         "amenities": ["کولر"]
       },
@@ -226,7 +226,7 @@
         "bedType": {
           "type": "King Bed",
           "count": 1,
-          "details": "1 تخت کینگ"
+          "details": "تخت کینگ"
         },
         "amenities": ["کولر"]
       }

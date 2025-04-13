@@ -47,7 +47,7 @@ class _StoryCarouselState extends State<StoryCarousel> {
 
   void _nextImage() {
     setState(() {
-      if (_currentIndex < widget.images.length) {
+      if (_currentIndex < widget.images.length - 1) {
         _currentIndex++;
       } else {
         _currentIndex = 0;

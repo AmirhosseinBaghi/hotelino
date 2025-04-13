@@ -30,14 +30,22 @@ class FavoritePage extends StatelessWidget {
             ),
             Consumer<FavoriteListProvider>(
               builder: (context, favoriteProvider, child) {
-                return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                  child: FavoriteHotelCard(
-                    hotel: favoriteProvider.favoritesHotelList[0],
-                    onRemoveFavotiteClicked: (hotelId) {
-                      favoriteProvider.toggleFavorite(hotelId);
-                    },
-                  ),
+                return ListView.builder(
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  itemCount: favoriteProvider.favoritesHotelList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+                      child: FavoriteHotelCard(
+                        hotel: favoriteProvider.favoritesHotelList[index],
+                        onRemoveFavotiteClicked: (hotelId) {
+                          favoriteProvider.toggleFavorite(hotelId);
+                        },
+                      ),
+                    );
+                  },
                 );
               },
             )

@@ -3,6 +3,7 @@ import 'package:hotelino/feachures/home/presentation/provider/home_provider.dart
 import 'package:hotelino/feachures/home/presentation/widgets/ad_banner.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/home_appbar.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/hotel_list_section.dart';
+import 'package:hotelino/feachures/home/presentation/widgets/hotel_vertical_list.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/searchbar.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/story_carousel.dart';
 import 'package:provider/provider.dart';
@@ -48,6 +49,13 @@ class HomePage extends StatelessWidget {
                 return StoryCarousel(
                     images: homeProvider.getStoryImages(),
                     title: homeProvider.storyTitle);
+              },
+            ),
+            Consumer<HomeProvider>(
+              builder: (context, homeProvider, child) {
+                return HotelVerticalList(
+                    title: "جدید ترین هتل ها",
+                    hotels: homeProvider.getNewestHotels());
               },
             )
           ],

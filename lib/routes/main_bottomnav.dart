@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotelino/core/constant/constant.dart';
+import 'package:hotelino/feachures/booking/presentation/booking_page.dart';
 import 'package:hotelino/feachures/favorite/presentation/favorite_page.dart';
 import 'package:hotelino/feachures/home/presentation/homepage.dart';
 import 'package:hotelino/routes/test.dart';

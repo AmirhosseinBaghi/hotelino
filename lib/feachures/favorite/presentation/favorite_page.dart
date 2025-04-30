@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hotelino/feachures/favorite/presentation/widget/favorite_item.dart';
+import 'package:hotelino/feachures/favorite/presentation/widgets/favorite_item.dart';
 import 'package:hotelino/feachures/home/presentation/provider/favorite_list_provider.dart';
 import 'package:hotelino/feachures/home/presentation/provider/profile_provider.dart';
 import 'package:hotelino/feachures/home/presentation/widgets/hotel_list_section.dart';

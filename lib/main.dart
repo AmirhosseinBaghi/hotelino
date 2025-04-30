@@ -3,6 +3,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:hotelino/bootstrap.dart';
 import 'package:hotelino/core/theme/app_theme.dart';
 import 'package:hotelino/core/theme/theme_provider.dart';
+import 'package:hotelino/feachures/booking/presentation/provider/booking_provider.dart';
 import 'package:hotelino/feachures/home/data/repositories/hotel_repository.dart';
 import 'package:hotelino/feachures/home/data/repositories/profile_repository.dart';
 import 'package:hotelino/feachures/home/presentation/provider/favorite_list_provider.dart';
@@ -37,7 +38,8 @@ void main() async {
               HotelRepository(jsonDataService: JsonDataService()))),
       ChangeNotifierProvider(
           create: (_) => FavoriteListProvider(
-              HotelRepository(jsonDataService: JsonDataService())))
+              HotelRepository(jsonDataService: JsonDataService()))),
+      ChangeNotifierProvider(create: (_) => BookingProvider())
     ],
     child: const MyApp(),
   ));

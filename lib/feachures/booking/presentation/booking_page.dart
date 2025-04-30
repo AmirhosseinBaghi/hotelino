@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hotelino/feachures/booking/presentation/provider/booking_provider.dart';
+import 'package:hotelino/feachures/booking/presentation/widgets/booking_form_fild.dart';
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
@@ -41,7 +42,45 @@ class _BookingPageState extends State<BookingPage> {
                   key: _formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [],
+                    children: [
+                      BookingFormFild(
+                        title: "نام و نام خانوادگی",
+                        hint: "نام و نام خانوادگی خود را وارد کنید...",
+                        keyboardType: TextInputType.text,
+                        inisialValue: bookingProvider.booking.fullName,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "نام خود را به درستی وارد کنید";
+                          }
+                          return null;
+                        },
+                        onSaved: (newValue) {
+                          if (newValue != null) {
+                            bookingProvider.setName(newValue);
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      BookingFormFild(
+                        title: "مقصد",
+                        hint: "مقصد خود را وارد کنید...",
+                        keyboardType: TextInputType.text,
+                        inisialValue: bookingProvider.booking.destination,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "لطفا مقصد خود را مشخص کنید";
+                          }
+                          return null;
+                        },
+                        onSaved: (newValue) {
+                          if (newValue != null) {
+                            bookingProvider.setDestination(newValue);
+                          }
+                        },
+                      )
+                    ],
                   ));
             },
           ),

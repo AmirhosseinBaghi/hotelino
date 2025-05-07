@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hotelino/feachures/booking/presentation/provider/booking_provider.dart';
 import 'package:hotelino/feachures/booking/presentation/widgets/booking_form_fild.dart';
+import 'package:hotelino/feachures/booking/presentation/widgets/date_picker_fild.dart';
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
@@ -79,7 +80,31 @@ class _BookingPageState extends State<BookingPage> {
                             bookingProvider.setDestination(newValue);
                           }
                         },
-                      )
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      DatePickerFild(
+                        title: "تاریخ اقامت",
+                        hint: "بازه زمانی اقامت را مشخص کنید",
+                        initialValue:
+                            bookingProvider.booking.checkInOutRangeDate,
+                        validator: (value) {
+                          if (value == null) {
+                            return "لطفا بازه زمانی را مشخص کنید";
+                          } else {
+                            return null;
+                          }
+                        },
+                        onSaved: (newValue) {
+                          if (newValue != null) {
+                            bookingProvider.setCheckInOutRangeDate(newValue);
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
                     ],
                   ));
             },

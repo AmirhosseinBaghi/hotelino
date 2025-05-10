@@ -74,7 +74,11 @@ class _DatePickerFildState extends State<DatePickerFild> {
                     child: Text(
                       dateText.isEmpty ? widget.hint : dateText,
                       style: TextStyle(
-                          color: dateText.isEmpty ? Colors.grey : Colors.black),
+                          color: dateText.isEmpty
+                              ? Colors.grey
+                              : Theme.of(context).brightness == Brightness.dark
+                                  ? Colors.white
+                                  : Colors.black),
                     ),
                   ),
                 ))

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hotelino/feachures/booking/presentation/provider/booking_provider.dart';
 import 'package:hotelino/feachures/booking/presentation/widgets/booking_form_fild.dart';
 import 'package:hotelino/feachures/booking/presentation/widgets/date_picker_fild.dart';
+import 'package:hotelino/feachures/booking/presentation/widgets/number_form_fild.dart';
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
@@ -119,6 +120,26 @@ class _BookingPageState extends State<BookingPage> {
                         onSaved: (newValue) {
                           if (newValue != null) {
                             bookingProvider.setNumberOfGuests(newValue);
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      NumberFormFild(
+                        title: "شماره تماس",
+                        hint: "شماره تماس خود را وارد کنید...",
+                        inisialValue: bookingProvider.booking.phoneNumber,
+                        keyboardType: TextInputType.number,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'لطفا شماره را به درستی وارد کنید';
+                          }
+                          return null;
+                        },
+                        onSaved: (newValue) {
+                          if (newValue != null) {
+                            bookingProvider.setPhoneNumber(newValue);
                           }
                         },
                       ),

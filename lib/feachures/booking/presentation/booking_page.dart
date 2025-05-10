@@ -105,6 +105,26 @@ class _BookingPageState extends State<BookingPage> {
                       SizedBox(
                         height: 8,
                       ),
+                      BookingFormFild(
+                        title: "تعداد نفرات",
+                        hint: "تعداد نفرات خود را وارد کنید...",
+                        keyboardType: TextInputType.text,
+                        inisialValue: bookingProvider.booking.numberOfGuests,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return "لطفا تعداد نفرات خود را مشخص کنید";
+                          }
+                          return null;
+                        },
+                        onSaved: (newValue) {
+                          if (newValue != null) {
+                            bookingProvider.setNumberOfGuests(newValue);
+                          }
+                        },
+                      ),
+                      SizedBox(
+                        height: 8,
+                      )
                     ],
                   ));
             },

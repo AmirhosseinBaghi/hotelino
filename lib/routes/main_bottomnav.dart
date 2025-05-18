@@ -98,6 +98,9 @@ class _MainBottomNavState extends State<MainBottomNav> {
       items: _navBarItems(),
       controller: _controller,
       onItemSelected: (index) {
+        if (index != 2) {
+          BookingPage.bookingPageKey.currentState?.resetForm();
+        }
         unfocusEditors(context);
       },
       navBarStyle: NavBarStyle.style7,

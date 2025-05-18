@@ -6,7 +6,9 @@ import 'package:hotelino/feachures/booking/presentation/widgets/number_form_fild
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
-  const BookingPage({super.key});
+  static final GlobalKey<_BookingPageState> bookingPageKey =
+      GlobalKey<_BookingPageState>();
+  BookingPage({Key? key}) : super(key: bookingPageKey);
 
   @override
   State<BookingPage> createState() => _BookingPageState();

@@ -2,14 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:hotelino/core/utils/keyboard.dart';
 
 class TermsWidget extends StatefulWidget {
-  const TermsWidget({super.key});
+  static final GlobalKey<_TermsWidgetState> termskey =
+      GlobalKey<_TermsWidgetState>();
+  TermsWidget({Key? key}) : super(key: termskey);
 
   @override
   State<TermsWidget> createState() => _TermsWidgetState();
 }
 
 class _TermsWidgetState extends State<TermsWidget> {
-  bool isCheked = false;
+  bool isChecked = false;
+  void resetCheckedBox() {
+    setState(() {
+      isChecked = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -37,10 +45,10 @@ class _TermsWidgetState extends State<TermsWidget> {
                   ])),
         ),
         Checkbox(
-          value: isCheked,
+          value: isChecked,
           onChanged: (value) {
             setState(() {
-              isCheked = value ?? false;
+              isChecked = value ?? false;
             });
           },
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),

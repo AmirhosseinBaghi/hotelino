@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotelino/core/constant/constant.dart';
 import 'package:hotelino/core/utils/keyboard.dart';
 import 'package:hotelino/feachures/booking/presentation/booking_page.dart';
+import 'package:hotelino/feachures/booking/presentation/widgets/terms_widget.dart';
 import 'package:hotelino/feachures/favorite/presentation/favorite_page.dart';
 import 'package:hotelino/feachures/home/presentation/homepage.dart';
 import 'package:hotelino/routes/test.dart';
@@ -100,6 +101,7 @@ class _MainBottomNavState extends State<MainBottomNav> {
       onItemSelected: (index) {
         if (index != 2) {
           BookingPage.bookingPageKey.currentState?.resetForm();
+          TermsWidget.termskey.currentState?.resetCheckedBox();
         }
         unfocusEditors(context);
       },

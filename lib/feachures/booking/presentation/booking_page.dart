@@ -3,6 +3,7 @@ import 'package:hotelino/feachures/booking/presentation/provider/booking_provide
 import 'package:hotelino/feachures/booking/presentation/widgets/booking_form_fild.dart';
 import 'package:hotelino/feachures/booking/presentation/widgets/date_picker_fild.dart';
 import 'package:hotelino/feachures/booking/presentation/widgets/number_form_fild.dart';
+import 'package:hotelino/feachures/booking/presentation/widgets/terms_widget.dart';
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
@@ -147,7 +148,8 @@ class _BookingPageState extends State<BookingPage> {
                       ),
                       SizedBox(
                         height: 8,
-                      )
+                      ),
+                      TermsWidget()
                     ],
                   ));
             },

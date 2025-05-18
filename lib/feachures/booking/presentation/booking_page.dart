@@ -149,7 +149,22 @@ class _BookingPageState extends State<BookingPage> {
                       SizedBox(
                         height: 8,
                       ),
-                      TermsWidget()
+                      TermsWidget(),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                            onPressed: () {
+                              if (_formKey.currentState!.validate()) {
+                                ScaffoldMessenger.of(context)
+                                    .showSnackBar(SnackBar(
+                                        content: Text(
+                                  "درخواست رزرو هتل با موفقیت انجام شد!🎉",
+                                  textDirection: TextDirection.rtl,
+                                )));
+                              }
+                            },
+                            child: Text("جستوجو هتل ها")),
+                      )
                     ],
                   ));
             },

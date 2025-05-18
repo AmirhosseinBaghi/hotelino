@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hotelino/core/constant/constant.dart';
+import 'package:hotelino/core/utils/keyboard.dart';
 import 'package:hotelino/feachures/booking/presentation/booking_page.dart';
 import 'package:hotelino/feachures/favorite/presentation/favorite_page.dart';
 import 'package:hotelino/feachures/home/presentation/homepage.dart';
@@ -96,7 +97,9 @@ class _MainBottomNavState extends State<MainBottomNav> {
       screens: _buildWidget(),
       items: _navBarItems(),
       controller: _controller,
-      onItemSelected: (value) {},
+      onItemSelected: (index) {
+        unfocusEditors(context);
+      },
       navBarStyle: NavBarStyle.style7,
       hideNavigationBarWhenKeyboardAppears: true,
       confineToSafeArea: true,

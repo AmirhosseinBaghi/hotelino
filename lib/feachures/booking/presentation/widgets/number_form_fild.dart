@@ -3,26 +3,28 @@ import 'package:hotelino/core/constant/constant.dart';
 import 'package:hotelino/feachures/booking/data/models/country.dart';
 
 class NumberFormFild extends StatefulWidget {
+  static final GlobalKey<NumberFormFildState> numberFormKey =
+      GlobalKey<NumberFormFildState>();
   final String title;
   final String hint;
   final String inisialValue;
   final TextInputType keyboardType;
   final FormFieldValidator<String>? validator;
   final FormFieldSetter<String>? onSaved;
-  const NumberFormFild(
-      {super.key,
-      required this.title,
+  NumberFormFild(
+      {required this.title,
       required this.hint,
       required this.inisialValue,
       required this.keyboardType,
       this.validator,
-      this.onSaved});
+      this.onSaved})
+      : super(key: numberFormKey);
 
   @override
-  State<NumberFormFild> createState() => _NumberFormFildState();
+  State<NumberFormFild> createState() => NumberFormFildState();
 }
 
-class _NumberFormFildState extends State<NumberFormFild> {
+class NumberFormFildState extends State<NumberFormFild> {
   late Country selectedCountry;
   final FocusNode _focusNode = FocusNode();
   final TextEditingController _controller = TextEditingController();
@@ -58,6 +60,18 @@ class _NumberFormFildState extends State<NumberFormFild> {
       },
     );
     super.initState();
+  }
+
+  void resetEnteredNumber() {
+    _controller.clear();
+    _textAlign = TextAlign.right;
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    _focusNode.dispose();
+    super.dispose();
   }
 
   @override

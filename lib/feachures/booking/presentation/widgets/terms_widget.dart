@@ -16,11 +16,17 @@ class TermsWidget extends StatefulWidget {
 }
 
 class TermsWidgetState extends State<TermsWidget> {
-  bool isChecked = false;
+  late bool isChecked;
   void resetCheckedBox() {
     setState(() {
       isChecked = false;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    isChecked = widget.inisialValue;
   }
 
   @override
@@ -30,6 +36,10 @@ class TermsWidgetState extends State<TermsWidget> {
       onSaved: widget.onSaved,
       initialValue: widget.inisialValue,
       builder: (FormFieldState<bool> field) {
+        // sync valeus
+        if (field.value != isChecked) {
+          field.didChange(isChecked);
+        }
         return Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -69,6 +79,7 @@ class TermsWidgetState extends State<TermsWidget> {
                   onChanged: (value) {
                     setState(() {
                       isChecked = value ?? false;
+                      field.didChange(isChecked);
                     });
                   },
                   shape: RoundedRectangleBorder(
@@ -100,25 +111,28 @@ class TermsWidgetState extends State<TermsWidget> {
       builder: (context) {
         return Padding(
           padding: EdgeInsets.all(24),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                "قوانین برنامه هتلینو",
-                style: Theme.of(context).textTheme.displayMedium,
-              ),
-              SizedBox(
-                height: 16,
-              ),
-              Text(
-                "این برنامه به شما این امکان را می‌دهد تا به راحتی هتل‌های مختلف را در کشورهای گوناگون جستجو کرده و رزرو کنید\n\n"
-                "شما قادر خواهید بود پروفایل شخصی خود را ایجاد کنید و هتل‌هایی که به نیازهای شما نزدیک‌تر هستند را پیدا کنید. توجه داشته باشید که هتل‌های رزرو شده قابل لغو نبوده و پس از انجام رزرو، تغییرات در این زمینه امکان‌پذیر نمی‌باشد\n\n"
-                "قیمت‌های هتل‌ها به صورت مقطوع اعلام شده‌اند و هیچ‌گونه تغییر قیمتی پس از رزرو نخواهید داشت. همچنین، اطلاعات هتل‌ها به دقت بررسی و به روزرسانی می‌شوند تا شما تجربه‌ای رضایت‌بخش از اقامت خود داشته باشید",
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.justify,
-                style: Theme.of(context).textTheme.bodyMedium,
-              ),
-            ],
+          child: SingleChildScrollView(
+            physics: BouncingScrollPhysics(),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Text(
+                  "قوانین برنامه هتلینو",
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
+                SizedBox(
+                  height: 16,
+                ),
+                Text(
+                  "این برنامه به شما این امکان را می‌دهد تا به راحتی هتل‌های مختلف را در کشورهای گوناگون جستجو کرده و رزرو کنید\n\n"
+                  "شما قادر خواهید بود پروفایل شخصی خود را ایجاد کنید و هتل‌هایی که به نیازهای شما نزدیک‌تر هستند را پیدا کنید. توجه داشته باشید که هتل‌های رزرو شده قابل لغو نبوده و پس از انجام رزرو، تغییرات در این زمینه امکان‌پذیر نمی‌باشد\n\n"
+                  "قیمت‌های هتل‌ها به صورت مقطوع اعلام شده‌اند و هیچ‌گونه تغییر قیمتی پس از رزرو نخواهید داشت. همچنین، اطلاعات هتل‌ها به دقت بررسی و به روزرسانی می‌شوند تا شما تجربه‌ای رضایت‌بخش از اقامت خود داشته باشید",
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.justify,
+                  style: Theme.of(context).textTheme.bodyMedium,
+                ),
+              ],
+            ),
           ),
         );
       },

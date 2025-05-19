@@ -7,15 +7,15 @@ import 'package:hotelino/feachures/booking/presentation/widgets/terms_widget.dar
 import 'package:provider/provider.dart';
 
 class BookingPage extends StatefulWidget {
-  static final GlobalKey<_BookingPageState> bookingPageKey =
-      GlobalKey<_BookingPageState>();
+  static final GlobalKey<BookingPageState> bookingPageKey =
+      GlobalKey<BookingPageState>();
   BookingPage({Key? key}) : super(key: bookingPageKey);
 
   @override
-  State<BookingPage> createState() => _BookingPageState();
+  State<BookingPage> createState() => BookingPageState();
 }
 
-class _BookingPageState extends State<BookingPage> {
+class BookingPageState extends State<BookingPage> {
   final _formKey = GlobalKey<FormState>();
 
   void resetForm() {
@@ -149,7 +149,18 @@ class _BookingPageState extends State<BookingPage> {
                       SizedBox(
                         height: 8,
                       ),
-                      TermsWidget(),
+                      TermsWidget(
+                        inisialValue: false,
+                        validator: (value) {
+                          if (value == null || value == false) {
+                            return 'لطفا قوانین و مقررات برنامه را بپذیرید';
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(

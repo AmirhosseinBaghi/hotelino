@@ -2,15 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:hotelino/core/utils/keyboard.dart';
 
 class TermsWidget extends StatefulWidget {
-  static final GlobalKey<_TermsWidgetState> termskey =
-      GlobalKey<_TermsWidgetState>();
-  TermsWidget({Key? key}) : super(key: termskey);
+  static final GlobalKey<TermsWidgetState> termskey =
+      GlobalKey<TermsWidgetState>();
+  final bool inisialValue;
+  final FormFieldValidator<bool>? validator;
+  final FormFieldSetter<bool>? onSaved;
+  TermsWidget(
+      {Key? key, required this.inisialValue, this.validator, this.onSaved})
+      : super(key: termskey);
 
   @override
-  State<TermsWidget> createState() => _TermsWidgetState();
+  State<TermsWidget> createState() => TermsWidgetState();
 }
 
-class _TermsWidgetState extends State<TermsWidget> {
+class TermsWidgetState extends State<TermsWidget> {
   bool isChecked = false;
   void resetCheckedBox() {
     setState(() {
@@ -20,42 +25,70 @@ class _TermsWidgetState extends State<TermsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      children: [
-        GestureDetector(
-          onTap: () {
-            _showTermsDialog(context);
-          },
-          child: RichText(
-              textDirection: TextDirection.rtl,
-              text: TextSpan(
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodyMedium
-                      ?.copyWith(color: Colors.grey.shade600),
-                  children: [
-                    TextSpan(text: "قوانین برنامه"),
-                    TextSpan(
-                        text: " هتلینو ",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            color: Theme.of(context).colorScheme.primary)),
-                    TextSpan(text: "را خوانده و می‌پذیرم.")
-                  ])),
-        ),
-        Checkbox(
-          value: isChecked,
-          visualDensity: VisualDensity(horizontal: -4),
-          onChanged: (value) {
-            setState(() {
-              isChecked = value ?? false;
-            });
-          },
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
-          activeColor: Theme.of(context).colorScheme.primary,
-        )
-      ],
+    return FormField<bool>(
+      validator: widget.validator,
+      onSaved: widget.onSaved,
+      initialValue: widget.inisialValue,
+      builder: (FormFieldState<bool> field) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    _showTermsDialog(context);
+                  },
+                  child: RichText(
+                      textDirection: TextDirection.rtl,
+                      text: TextSpan(
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodyMedium
+                              ?.copyWith(color: Colors.grey.shade600),
+                          children: [
+                            TextSpan(text: "قوانین برنامه"),
+                            TextSpan(
+                                text: " هتلینو ",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w600,
+                                    color:
+                                        Theme.of(context).colorScheme.primary)),
+                            TextSpan(text: "را خوانده و می‌پذیرم.")
+                          ])),
+                ),
+                Checkbox(
+                  value: isChecked,
+                  visualDensity: VisualDensity(horizontal: -4),
+                  side: BorderSide(
+                      color: field.hasError
+                          ? Theme.of(context).colorScheme.error
+                          : Theme.of(context).colorScheme.primary,
+                      width: field.hasError ? 1 : 1.5),
+                  onChanged: (value) {
+                    setState(() {
+                      isChecked = value ?? false;
+                    });
+                  },
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(4)),
+                  activeColor: Theme.of(context).colorScheme.primary,
+                )
+              ],
+            ),
+            if (field.hasError)
+              Padding(
+                padding: EdgeInsets.only(right: 12),
+                child: Text(
+                  field.errorText ?? '',
+                  style: TextStyle(
+                      color: Theme.of(context).colorScheme.error, fontSize: 12),
+                ),
+              )
+          ],
+        );
+      },
     );
   }
 

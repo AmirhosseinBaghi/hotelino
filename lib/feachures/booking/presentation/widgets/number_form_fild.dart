@@ -142,7 +142,9 @@ class NumberFormFildState extends State<NumberFormFild> {
                         ).toList(),
                         onChanged: (Country? newCountry) {
                           if (newCountry != null) {
-                            selectedCountry = newCountry;
+                            setState(() {
+                              selectedCountry = newCountry;
+                            });
                           }
                         },
                       ),

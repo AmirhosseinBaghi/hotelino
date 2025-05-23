@@ -83,7 +83,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       .textTheme
                       .headlineSmall!
                       .copyWith(color: Colors.grey),
-                )
+                ),
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           )),

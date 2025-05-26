@@ -16,6 +16,7 @@ class ProfileOptionItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
       child: InkWell(
+        borderRadius: BorderRadius.circular(16),
         onTap: onTap,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
@@ -28,15 +29,18 @@ class ProfileOptionItem extends StatelessWidget {
               Expanded(
                   child: Text(
                 title,
+                textAlign: TextAlign.right,
                 style: Theme.of(context).textTheme.displaySmall,
               )),
               SizedBox(
                 width: 12,
               ),
               Container(
+                padding: EdgeInsets.all(12),
                 decoration: BoxDecoration(
-                    color: Color(0xfff4eae2),
-                    borderRadius: BorderRadius.circular(12)),
+                  color: Color(0xfff4eae2),
+                  borderRadius: BorderRadius.circular(12),
+                ),
                 child: Icon(
                   icons,
                   size: 20,

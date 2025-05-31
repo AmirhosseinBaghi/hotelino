@@ -32,6 +32,44 @@ class HotelDetailPage extends StatelessWidget {
                         fit: BoxFit.cover, networkUrl(hotel.images.first)),
                   ),
                 ),
+                expandedHeight: 300,
+                elevation: 8,
+                leading: BackButton(
+                  color: Colors.white,
+                ),
+              ),
+              SliverToBoxAdapter(
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Text(
+                        hotel.name,
+                        style: Theme.of(context).textTheme.headlineMedium,
+                        textDirection: TextDirection.rtl,
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                        Text(
+                          hotel.address,
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                        ),
+                        SizedBox(
+                          width: 6,
+                        ),
+                        Icon(
+                          Icons.location_on_outlined,
+                          size: 18,
+                          color: Colors.grey,
+                        ),
+                      ]),
+                    ],
+                  ),
+                ),
               )
             ],
           ),

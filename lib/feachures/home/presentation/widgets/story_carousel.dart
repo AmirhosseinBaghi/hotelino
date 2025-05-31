@@ -96,6 +96,31 @@ class _StoryCarouselState extends State<StoryCarousel> {
                         Image.network(
                           networkUrl(imageUrl),
                           fit: BoxFit.cover,
+                          loadingBuilder: (context, child, loadingProgress) {
+                            if (loadingProgress == null) {
+                              return child;
+                            } else {
+                              return Center(
+                                child: CircularProgressIndicator(
+                                  value: loadingProgress.expectedTotalBytes !=
+                                          null
+                                      ? loadingProgress.cumulativeBytesLoaded /
+                                          (loadingProgress.expectedTotalBytes!)
+                                      : null,
+                                ),
+                              );
+                            }
+                          },
+                          errorBuilder: (context, error, stackTrace) {
+                            return Center(
+                                child: Text(
+                              "خطا در بارگزاری تصویر",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyMedium!
+                                  .copyWith(color: Colors.red),
+                            ));
+                          },
                         ),
                         Container(
                           decoration: BoxDecoration(

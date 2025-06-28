@@ -67,6 +67,71 @@ class HotelDetailPage extends StatelessWidget {
                           color: Colors.grey,
                         ),
                       ]),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                        "امکانات رفاهی",
+                        style: Theme.of(context).textTheme.headlineSmall,
+                        textDirection: TextDirection.rtl,
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Wrap(
+                        spacing: 12,
+                        children: hotel.amenities.map(
+                          (a) {
+                            IconData icon;
+
+                            switch (a) {
+                              case 'کولر':
+                                icon = Icons.ac_unit_rounded;
+                                break;
+                              case 'باشگاه':
+                                icon = Icons.fitness_center_rounded;
+                                break;
+                              case 'رستوران':
+                                icon = Icons.restaurant;
+                                break;
+                              case 'کافه':
+                                icon = Icons.restaurant;
+                                break;
+                              case 'ساحل':
+                                icon = Icons.beach_access_rounded;
+                                break;
+                              case 'استخر':
+                                icon = Icons.pool_rounded;
+                                break;
+                              default:
+                                icon = Icons.check_circle_outline_rounded;
+                            }
+                            return Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Container(
+                                  padding: EdgeInsets.all(12),
+                                  decoration: BoxDecoration(
+                                      color: Colors.grey.shade200,
+                                      borderRadius: BorderRadius.circular(16)),
+                                  child: Icon(
+                                    icon,
+                                    size: 30,
+                                    color: Colors.grey,
+                                  ),
+                                ),
+                                Text(
+                                  a,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodySmall!
+                                      .copyWith(color: Colors.black87),
+                                )
+                              ],
+                            );
+                          },
+                        ).toList(),
+                      )
                     ],
                   ),
                 ),

@@ -131,6 +131,46 @@ class HotelDetailPage extends StatelessWidget {
                             );
                           },
                         ).toList(),
+                      ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                        'گالری تصاویر',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      SizedBox(
+                        height: 100,
+                        child: ListView.builder(
+                          itemCount: hotel.images.length,
+                          scrollDirection: Axis.horizontal,
+                          reverse: true,
+                          itemBuilder: (context, index) {
+                            return Row(
+                              children: [
+                                GestureDetector(
+                                  onTap: () {},
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(16),
+                                    child: Image.network(
+                                      networkUrl(hotel.images[index]),
+                                      width: 120,
+                                      height: 100,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                if (index != 0)
+                                  SizedBox(
+                                    width: 8,
+                                  )
+                              ],
+                            );
+                          },
+                        ),
                       )
                     ],
                   ),

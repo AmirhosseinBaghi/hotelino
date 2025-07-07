@@ -4,6 +4,7 @@ import 'package:hotelino/core/utils/network.dart';
 import 'package:hotelino/feachures/home/data/models/model.dart';
 import 'package:hotelino/feachures/home/data/repositories/hotel_repository.dart';
 import 'package:hotelino/feachures/hotel_detail/presentation/full_screen_map.dart';
+import 'package:hotelino/feachures/hotel_detail/presentation/full_screen_shower.dart';
 import 'package:hotelino/shared/servises/json_data_service.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
@@ -31,7 +32,13 @@ class HotelDetailPage extends StatelessWidget {
               SliverAppBar(
                 flexibleSpace: FlexibleSpaceBar(
                   background: GestureDetector(
-                    onLongPress: () {},
+                    onLongPress: () {
+                      PersistentNavBarNavigator.pushNewScreen(context,
+                          pageTransitionAnimation:
+                              PageTransitionAnimation.cupertino,
+                          screen:
+                              FullScreenShower(imageUrl: hotel.images.first));
+                    },
                     child: Image.network(
                         fit: BoxFit.cover, networkUrl(hotel.images.first)),
                   ),
@@ -156,7 +163,14 @@ class HotelDetailPage extends StatelessWidget {
                             return Row(
                               children: [
                                 GestureDetector(
-                                  onTap: () {},
+                                  onTap: () {
+                                    PersistentNavBarNavigator.pushNewScreen(
+                                        context,
+                                        pageTransitionAnimation:
+                                            PageTransitionAnimation.cupertino,
+                                        screen: FullScreenShower(
+                                            imageUrl: hotel.images[index]));
+                                  },
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(16),
                                     child: Image.network(
@@ -204,6 +218,8 @@ class HotelDetailPage extends StatelessWidget {
                           TextButton(
                               onPressed: () {
                                 PersistentNavBarNavigator.pushNewScreen(context,
+                                    pageTransitionAnimation:
+                                        PageTransitionAnimation.cupertino,
                                     screen: FullScreenMap(
                                         lat: hotel.location.latitude,
                                         lon: hotel.location.longitude,

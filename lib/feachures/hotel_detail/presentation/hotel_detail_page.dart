@@ -3,8 +3,10 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:hotelino/core/utils/network.dart';
 import 'package:hotelino/feachures/home/data/models/model.dart';
 import 'package:hotelino/feachures/home/data/repositories/hotel_repository.dart';
+import 'package:hotelino/feachures/hotel_detail/presentation/full_screen_map.dart';
 import 'package:hotelino/shared/servises/json_data_service.dart';
 import 'package:latlong2/latlong.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 
 class HotelDetailPage extends StatelessWidget {
   const HotelDetailPage({super.key, required this.hotelId});
@@ -200,7 +202,13 @@ class HotelDetailPage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                PersistentNavBarNavigator.pushNewScreen(context,
+                                    screen: FullScreenMap(
+                                        lat: hotel.location.latitude,
+                                        lon: hotel.location.longitude,
+                                        name: hotel.name));
+                              },
                               child: Text(
                                 "مشاهده نقشه",
                                 textDirection: TextDirection.rtl,

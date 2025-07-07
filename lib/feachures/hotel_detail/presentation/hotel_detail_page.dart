@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
 import 'package:hotelino/core/utils/network.dart';
 import 'package:hotelino/feachures/home/data/models/model.dart';
 import 'package:hotelino/feachures/home/data/repositories/hotel_repository.dart';
 import 'package:hotelino/shared/servises/json_data_service.dart';
+import 'package:latlong2/latlong.dart';
 
 class HotelDetailPage extends StatelessWidget {
   const HotelDetailPage({super.key, required this.hotelId});
@@ -191,6 +193,86 @@ class HotelDetailPage extends StatelessWidget {
                             .copyWith(height: 1.5),
                         textDirection: TextDirection.rtl,
                       ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TextButton(
+                              onPressed: () {},
+                              child: Text(
+                                "مشاهده نقشه",
+                                textDirection: TextDirection.rtl,
+                              )),
+                          Text(
+                            'موقعیت مکانی هتل بر روی نقشه',
+                            style: Theme.of(context).textTheme.headlineSmall,
+                            textDirection: TextDirection.rtl,
+                          )
+                        ],
+                      ),
+                      SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 200,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(14)),
+                        child: FlutterMap(
+                            options: MapOptions(
+                                initialZoom: 15.0,
+                                initialCenter: LatLng(hotel.location.latitude,
+                                    hotel.location.longitude),
+                                interactionOptions: InteractionOptions(
+                                    flags: InteractiveFlag.all &
+                                        ~InteractiveFlag.rotate)),
+                            children: [
+                              TileLayer(
+                                urlTemplate:
+                                    'https://tile.openstreetmap.org/{s}/{x}/{y}.png',
+                                userAgentPackageName: "com.example.hotelino",
+                              ),
+                              MarkerLayer(markers: [
+                                Marker(
+                                    width: 80,
+                                    height: 80,
+                                    point: LatLng(hotel.location.latitude,
+                                        hotel.location.longitude),
+                                    child: Column(
+                                      children: [
+                                        Icon(
+                                          Icons.location_pin,
+                                          color: Colors.red,
+                                          size: 40,
+                                        ),
+                                        SizedBox(
+                                          height: 4,
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                            horizontal: 4,
+                                            vertical: 2,
+                                          ),
+                                          color: Colors.white60,
+                                          child: Text(
+                                            hotel.name,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodySmall!
+                                                .copyWith(color: Colors.black),
+                                            textDirection: TextDirection.rtl,
+                                          ),
+                                        )
+                                      ],
+                                    ))
+                              ])
+                            ]),
+                      ),
+                      SizedBox(
+                        height: 8,
+                      )
                     ],
                   ),
                 ),

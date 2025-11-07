@@ -19,45 +19,43 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            SizedBox(
-              height: 16,
-            ),
+            SizedBox(height: 16),
             SearchbarWidget(),
-            SizedBox(
-              height: 16,
-            ),
+            SizedBox(height: 16),
             AdBanner(),
             Consumer<HomeProvider>(
               builder: (context, homeProvider, child) {
                 return HotelListSection(
-                    title: "محبوب ترین هتل ها",
-                    hotels: homeProvider.getPopularHotels());
+                  title: "محبوب ترین هتل ها",
+                  hotels: homeProvider.getPopularHotels(),
+                );
               },
             ),
             Consumer<HomeProvider>(
               builder: (context, homeProvider, child) {
                 return HotelListSection(
-                    title: "پیشنهاد ویژه امروز",
-                    hotels: homeProvider.getSpecialOfferHotels());
+                  title: "پیشنهاد ویژه امروز",
+                  hotels: homeProvider.getSpecialOfferHotels(),
+                );
               },
             ),
-            SizedBox(
-              height: 16,
-            ),
+            SizedBox(height: 16),
             Consumer<HomeProvider>(
               builder: (context, homeProvider, child) {
                 return StoryCarousel(
-                    images: homeProvider.getStoryImages(),
-                    title: homeProvider.storyTitle);
+                  images: homeProvider.getStoryImages(),
+                  title: homeProvider.storyTitle,
+                );
               },
             ),
             Consumer<HomeProvider>(
               builder: (context, homeProvider, child) {
                 return HotelVerticalList(
-                    title: "جدید ترین هتل ها",
-                    hotels: homeProvider.getNewestHotels());
+                  title: "جدید ترین هتل ها",
+                  hotels: homeProvider.getNewestHotels(),
+                );
               },
-            )
+            ),
           ],
         ),
       ),

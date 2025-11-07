@@ -9,7 +9,7 @@ class SearchbarWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16),
       child: Container(
         decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerLow,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(16)),
         child: Row(
           children: [
